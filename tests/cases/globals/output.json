@@ -1,0 +1,25 @@
+{
+    "_ENV": {
+        "a": "Lorem",
+        "b": "ipsum"
+    },
+    "_GET": {
+        "G": {
+            "a": "dolor",
+            "b": "sit"
+        }
+    },
+    "_POST": {
+        "P": {
+            "a": "amet",
+            "b": "consectetur"
+        }
+    },
+    "_COOKIE": {
+        "C[a]": "adipiscing",
+        "C[b]": "elit"
+    },
+    "_SERVER": {
+        "DOCUMENT_ROOT": "\/var\/www"
+    }
+}

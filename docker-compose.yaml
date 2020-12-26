@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+    cli-ent:
+        build:
+            context: ./
+            args:
+                UID: ${UID}
+        environment:
+            PHP_IDE_CONFIG: ${PHP_IDE_CONFIG:-}
+            XDEBUG_CONFIG: ${XDEBUG_CONFIG:-remote_autostart=0 remote_enable=0}
+            PHAN_ALLOW_XDEBUG: ${PHAN_ALLOW_XDEBUG:-1}
+            PHAN_DISABLE_XDEBUG_WARN: ${PHAN_DISABLE_XDEBUG_WARN:-1}

@@ -45,5 +45,5 @@ $response = $client->get('http://localhost/install.php');
 
 ## Developing
 
-* `phpunit` to run tests;
-* `phan` to lint;
+* `composer run test` to run tests;
+* `composer run lint` to lint;

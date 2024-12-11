@@ -16,9 +16,9 @@
   "require": {
     "php": "^8.3",
     "ext-json": "*",
+    "symfony/process": "^7.0",
     "guzzlehttp/psr7": "^1.6",
     "guzzlehttp/promises": "^1.3",
-    "symfony/process": "^5.0",
     "guzzle/parser": "^3.9",
     "guzzlehttp/guzzle": "^6.2 || ^7.2"
   },

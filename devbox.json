@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.6/.schema/devbox.schema.json",
+  "packages": [
+    "php@8.3",
+    "php83Extensions.xdebug@3.4",
+    "phpExtensions.ast@1.0"
+  ],
+  "env": {
+    "PATH": "$PWD/vendor/bin:$PATH",
+    "PHAN_ALLOW_XDEBUG": "1"
+  }
+}

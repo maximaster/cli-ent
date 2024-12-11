@@ -1,17 +1,25 @@
 # maximaster/cli-ent
 
-Guzzle [handler](https://docs.guzzlephp.org/en/stable/handlers-and-middleware.html#handlers) to imitate HTTP calls
-through CLI.
+Guzzle [handler](https://docs.guzzlephp.org/en/stable/handlers-and-middleware.html#handlers)
+to imitate HTTP calls through CLI.
+
+## Installing
+
+```bash
+composer require maximaster/cli-ent
+```
 
 ## Reasoning
 
-Imagine that you have a legacy CMS which can be installed only through web interface. By using the handler you can
-install such a CMS using CLI just by calling needed http queries like you would do it through web interface, but
+Imagine that you have a legacy CMS which can be installed only through web
+interface. By using the handler you can install such a CMS using CLI just by
+calling needed http queries like you would do it through web interface, but
 without running webserver.
 
 ## Usage
 
 ```php
+<?php
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use Guzzle\Parser\Cookie\CookieParser;
@@ -35,19 +43,7 @@ $response = $client->get('http://localhost/install.php');
 // etc
 ```
 
-## Installing
-
-```
-composer require maximaster/cli-ent
-```
-
-but you should also install [runkit7](https://github.com/runkit7/runkit7) which will be `ext-runkit7` or `ext-runkit`
-depending on version you chose.
-
 ## Developing
 
-You can use
-
-* `make build` - to prepare
-* `make test` - to run tests
-* `make lint` - to run static analysis
+* `phpunit` to run tests;
+* `phan` to lint;

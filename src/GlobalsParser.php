@@ -54,6 +54,10 @@ class GlobalsParser implements GlobalsParserInterface
             $globals['_COOKIE'] = array_merge($globals['_COOKIE'], $cookieInfo['cookies']);
         }
 
+        if (is_string($globals['_COOKIE']['CLI_ENT_SESSION'] ?? null)) {
+            $globals['_SESSION'] = unserialize(base64_decode($globals['_COOKIE']['CLI_ENT_SESSION']));
+        }
+
         if ($this->requestOrder) {
             foreach (str_split($this->requestOrder, 1) as $globalPart) {
                 foreach (array_keys($globals) as $globalPartFullName) {

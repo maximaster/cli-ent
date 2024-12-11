@@ -6,7 +6,6 @@ use Exception;
 use Guzzle\Parser\Cookie\CookieParser;
 use Guzzle\Parser\Message\MessageParser;
 use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
 use Maximaster\CliEnt\CliEntHandler;
 use Maximaster\CliEnt\GlobalsParser;
 use PHPUnit\Framework\TestCase;
@@ -23,8 +22,7 @@ class CliEntHandlerTest extends TestCase
             $globals['_SERVER']['DOCUMENT_ROOT'] = '/var/www';
         });
 
-        /** @var Response $response */
-        $response = $cliEnt(
+        $response = $cliEnt->__invoke(
             new Request(
                 'POST',
                 'https://phpunit.localhost/globals/index.php?G[a]=dolor&G[b]=sit',
@@ -50,7 +48,7 @@ class CliEntHandlerTest extends TestCase
     /**
      * @throws Exception
      */
-    public function testSession()
+    public function testSession(): void
     {
         $cliEnt = $this->prepareCliEnt();
 

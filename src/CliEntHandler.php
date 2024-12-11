@@ -32,9 +32,6 @@ class CliEntHandler
     /** @var MessageParserInterface */
     private $messageParser;
 
-    /** @var bool */
-    private $ignoreRunkitMiss;
-
     /**
      * @param GlobalsParserInterface $globalsExtractor
      * @param MessageParserInterface $messageParser
@@ -42,7 +39,6 @@ class CliEntHandler
      * @param callable|null $globalsHandler
      * @param string|null $bootstrapFile
      *
-     * @param bool $ignoreRunkitMiss
      * @throws Exception
      */
     public function __construct(
@@ -50,8 +46,7 @@ class CliEntHandler
         MessageParserInterface $messageParser,
         string $resourcesRoot,
         ?callable $globalsHandler = null,
-        string $bootstrapFile = null,
-        bool $ignoreRunkitMiss = false
+        ?string $bootstrapFile = null
     ) {
         $this->resourcesRoot = $resourcesRoot;
 
@@ -63,7 +58,6 @@ class CliEntHandler
         $this->globalsExtractor = $globalsExtractor;
         $this->messageParser = $messageParser;
         $this->globalsHandler = $globalsHandler;
-        $this->ignoreRunkitMiss = $ignoreRunkitMiss;
     }
 
     /**
@@ -84,14 +78,13 @@ class CliEntHandler
                 [(new PhpExecutableFinder())->find(true)],
                 [
                     "-d", "auto_prepend_file={$this->bootstrapFile}",
+                    "-d", "disable_functions=header",
                     $resource,
                 ]
             ),
             null,
             [
-                self::CLI_ENT_INPUT => json_encode(compact('globals') + [
-                    'ignoreRunkitMiss' => $this->ignoreRunkitMiss,
-                ])
+                self::CLI_ENT_INPUT => json_encode(compact('globals'))
             ],
             null,
             null
